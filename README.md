@@ -23,23 +23,23 @@ test_ticker = Prodictors(ticker)
 ```
 test_ticker.linear_prediction() 
 ```
-![](images/Linear Regression Prediction.png)
+![](images/LinearRegressionPrediction.png)
 
 ## KNN Stock Price Prediction
 ```
 test_ticker.knn_prediction()
 ```
-![](images/KNN Prediction.png)
+![](images/KNNPrediction.png)
 
 ## Prophet Stock Price Prediction
 ```
 test_ticker.prophet_predict(days = 365)
 ```
-![](images/Prophet Prediction.png)
+![](images/ProphetPrediction.png)
 
 ## Prophet Seasonal trend
 ```
 test_ticker.trend_analizer(days = 365)
 ```
-![](Trend Analizer.png)
+![](images/TrendAnalizer.png)
 
