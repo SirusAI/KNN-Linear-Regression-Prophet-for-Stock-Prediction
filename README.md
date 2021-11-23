@@ -13,9 +13,33 @@ I developed this tool mainly to gain more experience in time series analysis and
 The tool (Prodictors) includes 4 main methods for predicting analyzing stock prices. 
 # Examples
 In this case, I will use IWM Which is the Russell 2000 ETF and see the price prediction by applying linear-regression / KNN / Prophet. 
+```
+from prodictors import Prodictors #import Prodictors
+ticker = 'IWM'
+test_ticker = Prodictors(ticker)
+```
 
 ## Linear Regresion Stock Price Prediction
 ```
 test_ticker.linear_prediction() 
 ```
-![](image/
+![](images/Linear Regression Prediction.png)
+
+## KNN Stock Price Prediction
+```
+test_ticker.knn_prediction()
+```
+![](images/KNN Prediction.png)
+
+## Prophet Stock Price Prediction
+```
+test_ticker.prophet_predict(days = 365)
+```
+![](images/Prophet Prediction.png)
+
+## Prophet Seasonal trend
+```
+test_ticker.trend_analizer(days = 365)
+```
+![](Trend Analizer.png)
+
