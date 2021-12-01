@@ -18,7 +18,7 @@ The data is generating from Yahoo Finance, up to 10 years of data for training (
 By applying linear-regression / KNN / Prophet. 
 ```
 from prodictors import Prodictors #import Prodictors
-ticker = 'TSLA'
+ticker = 'IWM'
 test_ticker = Prodictors(ticker)
 ```
 
@@ -38,11 +38,13 @@ test_ticker.knn_prediction()
 ```
 test_ticker.quad_regression2()
 ```
+![](images/quadr2.png)
 
 ## Quadratic regression, PolynomiaFeatures, Degree = 3
 ```
 test_ticker.quad_regression3()
 ```
+![](images/Quadr3.png)
 
 ## Prophet Stock Price Prediction
 ```
