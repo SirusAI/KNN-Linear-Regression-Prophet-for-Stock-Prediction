@@ -10,6 +10,9 @@ from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
 
 start = datetime.datetime(2010, 1, 1)
 end = datetime.datetime.today().strftime('%Y-%m-%d')
@@ -57,13 +60,27 @@ class Prodictors:
         clfknn = KNeighborsRegressor(n_neighbors=2)
         clfknn.fit(X_train, y_train)
         
+        #Quadratic Regression PolynomiaFeatures = 2
+        clfpoly2 = make_pipeline(PolynomialFeatures(2), Ridge())
+        clfpoly2.fit(X_train, y_train)
+        
+        #Quadratic Regression PolynomiaFeatures = 3
+        clfpoly3 = make_pipeline(PolynomialFeatures(3), Ridge())
+        clfpoly3.fit(X_train, y_train)
+        
         #Linear confidence
         self.confidencereg = clfg.score(X_test, y_test)
         #KNN confidence
         self.confidenceknn = clfknn.score(X_test, y_test)
+        #Quadratic Regression confidence PolynomiaFeatures = 2
+        confidencepoly2 = clfpoly2.score(X_test,y_test)
+        #Quadratic Regression confidence PolynomiaFeatures = 3
+        confidencepoly3 = clfpoly3.score(X_test,y_test)
 
         self.forecast_set_reg = clfg.predict(X_lately)
         self.forecast_set_knn = clfknn.predict(X_lately)
+        self.forecast_set_poly2 = clfpoly2.predict(X_lately)
+        self.forecast_set_poly3 = clfpoly3.predict(X_lately)
         self.dfg['Forecast'] = np.nan
         last_date = self.dfg.iloc[-1].name
         last_unix = last_date
@@ -158,5 +175,37 @@ class Prodictors:
         plt.xlabel('Date')
         plt.ylabel('Price')
         print("KNN Prediction | ","Ticker:",self.symbol.upper(),'| ',\
-              'KNN Confidencd:',self.confidenceknn)
+              'KNN Confidence:',self.confidenceknn)
         return plt.show()
+    
+    #Predicting price for the next year by applying Quadratic regression PolynomiaFeatures = 2
+    def quad_regression2(self):
+        plt.figure(figsize=(20,10),dpi = 75)
+        for i in self.forecast_set_poly2:
+            next_date = self.next_unix
+            self.next_unix += datetime.timedelta(days=1)
+            self.dfg.loc[next_date] = [np.nan for _ in range(len(self.dfg.columns)-1)]+[i]
+        self.dfg['Adj Close'].tail(500).plot()
+        self.dfg['Forecast'].tail(500).plot()
+        plt.legend(loc=4)
+        plt.xlabel('Date')
+        plt.ylabel('Price')
+        print("Quadratic Regression 2 Prediction | ","Ticker",self.symbol.upper(),'| ',\
+              'Quad_R2 Confidence:',self.confidenceknn)
+        plt.show()
+        
+    #Predicting price for the next year by applying Quadratic regression PolynomiaFeatures = 3
+    def quad_regression3(self):
+        plt.figure(figsize=(20,10),dpi = 75)
+        for i in self.forecast_set_poly3:
+            next_date = self.next_unix
+            self.next_unix += datetime.timedelta(days=1)
+            self.dfg.loc[next_date] = [np.nan for _ in range(len(self.dfg.columns)-1)]+[i]
+        self.dfg['Adj Close'].tail(500).plot()
+        self.dfg['Forecast'].tail(500).plot()
+        plt.legend(loc=4)
+        plt.xlabel('Date')
+        plt.ylabel('Price')
+        print("Quadratic Regression 3 Prediction | ","Ticker",self.symbol.upper(),'| ',\
+              'Quad_R3 Confidence:',self.confidenceknn)
+        plt.show()    
