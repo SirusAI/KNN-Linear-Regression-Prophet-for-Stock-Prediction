@@ -10,6 +10,7 @@ I developed this tool mainly to gain more experience in time series analysis and
 * [Sklearn](https://scikit-learn.org/stable/user_guide.html)
 * [Numpy](https://numpy.org/doc/stable/)
 * [Math](https://docs.python.org/3/library/math.html)
+
 # Methods
 The tool (Prodictors) includes 3 main methods for predicting analyzing stock prices. 
 The data is generating from Yahoo Finance, up to 10 years of data for training (from 1/1/2010 to the most recent avaiable data). The default statistics data is the adj close, and the default start and end dates are the start and end dates of the data.
@@ -32,6 +33,16 @@ test_ticker.linear_prediction()
 test_ticker.knn_prediction()
 ```
 ![](images/KNNPrediction.png)
+
+## Quadratic regression, PolynomiaFeatures, Degree = 2
+```
+test_ticker.quad_regression2()
+```
+
+## Quadratic regression, PolynomiaFeatures, Degree = 3
+```
+test_ticker.quad_regression3()
+```
 
 ## Prophet Stock Price Prediction
 ```
