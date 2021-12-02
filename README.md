@@ -52,9 +52,3 @@ test_ticker.prophet_predict(days = 365)
 ```
 ![](images/ProphetPrediction.png)
 
-## Prophet Seasonal trend
-```
-test_ticker.trend_analizer(days = 365)
-```
-![](images/TrendAnalizer.png)
-
