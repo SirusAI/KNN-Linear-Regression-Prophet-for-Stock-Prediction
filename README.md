@@ -1,6 +1,5 @@
-# KNN-Linear-Regression-Prophet-for-Stock-Price-Prediction
-Machine Learning tool for stock price prediction by applying KNN, Linear Regression and Prophet.
-I developed this tool mainly to gain more experience in time series analysis and object-oriented programming. I will occasionally update this project by adding more fuctions. Please do not use it for making investment or trading decision. 
+# KNN-Linear-Regression-Prophet-for-Stock-Price-Prediction (Prodictor)
+Prodictor is a python base project that I develop to gain more experience in Machine Learning for stock price prediction by applying KNN, Linear Regression and Prophet.I will occasionally update this project by adding more fuctions. Please do not use it for making investment or trading decision. 
 # Requirements
 * [Pandas](https://pandas.pydata.org)
 * [Pandas-datareader](https://pandas-datareader.readthedocs.io/en/latest)
