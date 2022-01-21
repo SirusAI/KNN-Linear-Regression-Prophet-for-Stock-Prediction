@@ -13,7 +13,7 @@ Prodictor is a python base tool that I develop to gain more experience in Machin
 # Methods
 The tool (Prodictors) includes 3 main methods for predicting analyzing stock prices. 
 The data is generating from Yahoo Finance, up to 10 years of data for training (from 1/1/2010 to the most recent avaiable data). The default statistics data is the adj close, and the default start and end dates are the start and end dates of the data.
-# Examples
+# Examples of Using "Prodictors" to Predict Stock Price
 By applying linear-regression / KNN / Prophet. 
 ```
 from prodictors import Prodictors #import Prodictors
